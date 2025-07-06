@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estefany Gomes - Desenvolvedora de Sistemas</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 1. Reset e Configurações Globais --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #050A13;
+            color: #E0E0E0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: #64B5F6;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #42A5F5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* --- 2. Efeitos Visuais e Animações --- */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(100, 181, 246, 0.15), transparent 60%);
+            filter: blur(100px);
+            z-index: -1;
+            animation: pulse 15s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-45%, -55%) scale(1.2); opacity: 0.8; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+        }
+
+        .hidden {
+            opacity: 0;
+            filter: blur(5px);
+            transform: translateY(20px);
+            transition: all 1s;
+        }
+
+        .show {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+        
+        /* --- 3. Estilos de Componentes (Ordem de Aparição) --- */
+
+        /* Cabeçalho */
+        header {
+            background-color: rgba(5, 10, 19, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(100, 181, 246, 0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #64B5F6;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 30px;
+        }
+
+        header nav ul li a {
+            color: #E0E0E0;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* Seção Genérica */
+        section {
+            padding: 100px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 2.5rem;
+            color: #64B5F6;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .section-description {
+            max-width: 700px;
+            color: #A7A7A7;
+            font-size: 1.1rem;
+            text-align: center;
+            margin: 0 auto 40px auto;
+        }
+
+        /* Seção Hero (Início) */
+        .hero {
+            background-color: transparent;
+            padding-top: 180px;
+            padding-bottom: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 100vh;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border: 5px solid rgba(100, 181, 246, 0.3);
+            box-shadow: 0 0 25px rgba(100, 181, 246, 0.1);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-text .tagline {
+            color: #64B5F6;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h1 {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 4rem;
+            font-weight: 700;
+            color: #E0E0E0;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(100, 181, 246, 0.2);
+        }
+
+        .hero-text .title {
+            color: #A7A7A7;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-text .location {
+            color: #8E8E8E;
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #64B5F6;
+            color: #050a13;
+            padding: 15px 40px;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all .3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #42A5F5;
+            color: #050a13;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(100, 181, 246, .5);
+        }
+
+        .arrow {
+            display: inline-block;
+            margin-left: 8px;
+            transition: transform .3s ease;
+        }
+
+        .cta-button:hover .arrow {
+            transform: translateX(5px);
+        }
+        
+        /* Seção Sobre */
+        .about {
+            background-color: rgba(8, 17, 32, 0.6);
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .about-content > p {
+            max-width: 800px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            color: #c7c7c7;
+            text-align: center;
+        }
+
+        .education-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            width: 100%;
+        }
+
+        .education-item {
+            background-color: #050a13;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 5px solid #64B5F6;
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(100, 181, 246, .1);
+        }
+
+        .education-title {
+            font-family: 'Roboto Mono', monospace;
+            color: #64B5F6;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .education-institution {
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #E0E0E0;
+        }
+
+        .education-description {
+            color: #A7A7A7;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* Seção Projetos */
+        .projects {
+            background-color: rgba(8, 17, 32, 0.6);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: rgba(10, 25, 47, 0.8);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(100, 181, 246, .1);
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(100, 181, 246, .2);
+        }
+
+        .project-header {
+            background-color: #0A192F;
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(100, 181, 246, .1);
+        }
+
+        .project-title {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.3rem;
+            color: #E0E0E0;
+        }
+
+        .project-tech {
+            background-color: #64B5F6;
+            color: #050a13;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: .9rem;
+            font-weight: 500;
+        }
+
+        .project-body {
+            padding: 25px;
+            color: #c7c7c7;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Seção Linguagens */
+        .languages {
+            background-color: rgba(8, 17, 32, 0.6);
+        }
+
+        .language-grid {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .language-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .language-item span {
+            color: #E0E0E0;
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-top: 15px;
+        }
+        
+        .language-item img {
+            opacity: .9;
+            transition: transform .3s ease, opacity .3s ease;
+            height: 60px; 
+            width: auto;
+        }
+
+        .language-item img:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Seção Contatos */
+        .contact {
+            background-color: rgba(8, 17, 32, 0.6);
+        }
+
+        .contact .section-title {
+            margin-bottom: 10px;
+        }
+
+        .contact .section-description {
+            margin-bottom: 50px;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 550px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #A7A7A7;
+            font-size: 1.1rem;
+            font-family: 'Roboto Mono', monospace;
+            padding: 15px 25px;
+            border: 1px solid rgba(100, 181, 246, .2);
+            border-radius: 8px;
+            width: 100%;
+            transition: all .3s ease;
+        }
+
+        .contact-link:hover {
+            color: #E0E0E0;
+            background-color: rgba(100, 181, 246, .1);
+            border-color: rgba(100, 181, 246, .4);
+            transform: translateY(-4px);
+            box-shadow: 0 4px 20px rgba(100, 181, 246, .2);
+        }
+
+        .contact-link .icon {
+            width: 24px;
+            height: 24px;
+            stroke: #64B5F6;
+            flex-shrink: 0; 
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #0A192F;
+            padding: 30px 0;
+            text-align: center;
+            color: #A7A7A7;
+            font-size: .9rem;
+            border-top: 1px solid rgba(100, 181, 246, .1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* --- 4. Responsividade --- */
+        @media (max-width: 768px) {
+            html {
+                font-size: 14px;
+            }
+
+            header .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            header .logo {
+                margin-bottom: 15px;
+            }
+
+            header nav ul {
+                padding: 0;
+            }
+            
+            header nav ul li {
+                margin: 0 15px;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .education-list, .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .language-grid {
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">Estefany Gomes</div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#linguagens">Linguagens</a></li>
+                    <li><a href="#contatos">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="container hero-content">
+                <div class="hero-image">
+                    <img src="/img/ester.jpeg" alt="Foto de Perfil">
+                </div>
+                <div class="hero-text">
+                    <p class="tagline">Olá, eu sou</p>
+                    <h1>ESTEFANY GOMES</h1>
+                    <p class="title">DESENVOLVEDORA DE SISTEMAS</p>
+                    <p class="location">Salvador, BA</p>
+                    <a href="#sobre" class="cta-button">EXPLORAR <span class="arrow">→</span></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="about hidden">
+            <div class="container">
+                <h2 class="section-title">SOBRE MIM</h2>
+                <div class="about-content">
+                    <p>
+                        Estudante de Desenvolvimento de Sistemas com foco em backend, especialmente em Java e C# para aplicações robustas. Minha experiência também se estende ao front-end, permitindo uma visão completa do ciclo de desenvolvimento. Sou movida pela curiosidade, dedicação e paixão por tecnologia, com um interesse crescente em inteligência artificial, segurança da informação e integração de sistemas. Em constante aprendizado, busco ativamente oportunidades para aplicar e expandir meus conhecimentos em projetos inovadores e desafiadores.
+                    </p>
+                    <div class="education-list">
+                        <div class="education-item">
+                            <h3 class="education-title">2024 - 2026</h3>
+                            <p class="education-institution">SENAI DENDEZEIROS</p>
+                            <p class="education-description">Curso Técnico em Desenvolvimento de Sistemas: Lógica de programação, banco de dados, front-end, back-end e práticas de mercado.</p>
+                        </div>
+                        <div class="education-item">
+                            <h3 class="education-title">2025 - 2027</h3>
+                            <p class="education-institution">UCSAL</p>
+                            <p class="education-description">Graduação em Análise e Desenvolvimento de Sistemas: Desenvolvimento de software, arquitetura de sistemas, segurança da informação e metodologias ágeis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projetos" class="projects hidden">
+            <div class="container">
+                <h2 class="section-title">PROJETOS</h2>
+                <p class="section-description">Uma seleção de projetos que demonstram minhas habilidades e paixão por programação.</p>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Cadastro de Usuário em C#</h3>
+                            <span class="project-tech">C#</span>
+                        </div>
+                        <div class="project-body">
+                            <p>Sistema de cadastro de usuários desenvolvido em C# com interface interativa no console. Permite cadastrar, listar e buscar usuários de forma simples e eficiente, facilitando a gestão de dados.</p>
+                            <a href="https://github.com/esterxy/Cadastro-de-usu-rio" target="_blank" class="project-link">Ver no GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Super Calculadora em JAVA</h3>
+                            <span class="project-tech">Java</span>
+                        </div>
+                        <div class="project-body">
+                            <p>Calculadora avançada criada em Java, oferecendo funcionalidades para cálculos matemáticos simples e complexos. Projetada para ser intuitiva, rápida e precisa para diversas operações.</p>
+                            <a href="https://github.com/esterxy/SuperCalculadora" target="_blank" class="project-link">Ver no GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="linguagens" class="languages hidden">
+            <div class="container">
+                <h2 class="section-title">LINGUAGENS</h2>
+                <p class="section-description">Tecnologias e linguagens com as quais tenho experiência.</p>
+                <div class="language-grid">
+                    <div class="language-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png" alt="Python">
+                        <span>Python</span>
+                    </div>
+                    <div class="language-item">
+                        <img src="https://www.svgrepo.com/show/303251/mysql-logo.svg" alt="MySQL">
+                        <span>MySQL</span>
+                    </div>
+                    <div class="language-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Logo_C_sharp.svg/1200px-Logo_C_sharp.svg.png" alt="C#">
+                        <span>C#</span>
+                    </div>
+                    <div class="language-item">
+                        <img src="https://www.svgrepo.com/show/452234/java.svg" alt="Java">
+                        <span>Java</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contatos" class="contact hidden">
+            <div class="container">
+                <h2 class="section-title">CONTATO</h2>
+                <p class="section-description">Sinta-se à vontade para se conectar. Estou aberto a novas oportunidades e colaborações.</p>
+                <div class="contact-links">
+                    <a href="mailto:estefany.gomes@ba.estudante.senai.br" class="contact-link">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <span>E-mail</span>
+                    </a>
+                    <a href="https://github.com/esterxy" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://linkedin.com/in/estefany-gomes-" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Estefany Gomes. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+    </script>
+
+</body>
+</html>

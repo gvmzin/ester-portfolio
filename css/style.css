@@ -1,0 +1,386 @@
+/* --- Reset e Configurações Globais --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #0c112a;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+    font-weight: 400;
+}
+
+a {
+    color: #4d88ff;
+    text-decoration: none;
+}
+
+section {
+    padding: 100px 0;
+}
+
+/* --- Cabeçalho --- */
+header {
+    background-color: rgba(12, 17, 42, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 2rem;
+}
+
+header nav ul li a {
+    color: #ffffff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #4d88ff;
+}
+
+/* --- Seção Hero (Início) --- */
+.hero {
+    padding-top: 180px;
+    background-color: #0c112a;
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80"%3E%3Cpath fill="%2310163a" fill-opacity="0.4" d="M14 16H9v-2h5V9.87a4 4 0 1 1 2 0V14h5v2h-5v5.13a4 4 0 1 1-2 0V16zM24 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 24a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm16-16a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 24a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM56 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 24a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM8 48a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 24a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm16-16a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 24a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm16-16a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 24a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm16-16a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 24a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"%3E%3C/path%3E%3C/svg%3E');
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.hero-text {
+    max-width: 55%;
+}
+
+.hero-text h1 {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin: 0.5rem 0 1rem;
+    color: #4186f7;
+    text-shadow: 0 0 15px rgba(65, 134, 247, 0.4);
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+}
+
+.hero-text .location {
+    margin-bottom: 2rem;
+    color: #a0a0a0;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #4d88ff;
+    color: #ffffff;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid #4d88ff;
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: #4d88ff;
+}
+
+.hero-image img {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #4d88ff;
+    box-shadow: 0 0 25px rgba(77, 136, 255, 0.5);
+}
+
+/* --- Seção Sobre --- */
+.about {
+    background-color: #10163a;
+}
+
+.about p {
+    max-width: 800px;
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+    color: #c0c0c0;
+}
+
+.education {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.education-item {
+    background-color: #0c112a;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 3px solid #4d88ff;
+}
+
+.education-item h3 {
+    color: #4d88ff;
+    margin-bottom: 0.5rem;
+}
+
+/* --- Seção Projetos --- */
+.projects {
+    background-color: #0c112a;
+}
+
+.section-intro {
+    max-width: 800px;
+    margin: 0 auto 3rem auto;
+    text-align: center;
+    color: #c0c0c0;
+    font-size: 1.1rem;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background-color: #10163a;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #1a224a;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-header {
+    padding: 2.5rem 1.5rem;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.project-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+}
+
+.project-header.csharp {
+    /* Você pode adicionar uma imagem de fundo aqui */
+    background-color: #5d2b93;
+}
+
+.project-header.java {
+    /* Você pode adicionar uma imagem de fundo aqui */
+    background-color: #b07219;
+}
+
+.project-header h3 {
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    z-index: 2;
+    position: relative;
+}
+
+.project-body {
+    padding: 1.5rem;
+}
+
+.project-body h4 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-repo {
+    color: #a0a0a0;
+    margin-bottom: 1rem;
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+/* --- Seção Linguagens --- */
+.languages {
+    background-color: #10163a;
+    text-align: center;
+}
+
+.language-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon-item img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+.icon-item img:hover {
+    transform: scale(1.1);
+}
+
+.icon-item span {
+    font-weight: 500;
+}
+
+/* --- Seção Contatos --- */
+.contact {
+    background-color: #0c112a;
+}
+
+.contact-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    background: #10163a;
+    padding: 3rem;
+    border-radius: 8px;
+}
+
+.contact-image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #1a224a;
+}
+
+.contact-text ul {
+    list-style: none;
+    margin-top: 1.5rem;
+}
+
+.contact-text ul li {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.contact-text ul li a {
+    transition: color 0.3s ease;
+}
+
+.contact-text ul li a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* --- Rodapé --- */
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #a0a0a0;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 992px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text {
+        max-width: 100%;
+        margin-bottom: 3rem;
+    }
+}
+
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    header nav {
+        display: none; /* Simplificação para mobile, ideal seria um menu hamburguer */
+    }
+    
+    .hero-text h1 {
+        font-size: 3.2rem;
+    }
+
+    .education {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
