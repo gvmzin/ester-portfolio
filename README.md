@@ -13,7 +13,7 @@
 
 **Você pode visitar o site em produção no seguinte link:**
 
-**[➡️ portfolio-estefany-gomes.dev](https://esterxy.github.io/portifolio/)**
+**[➡️ portfolio-estefany-gomes.dev](https://esterxy.github.io/portfolio/)**
 
 
 
