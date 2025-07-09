@@ -522,6 +522,16 @@
                 gap: 30px;
             }
         }
+    footer a {
+    color: #64B5F6; 
+    text-decoration: none; 
+    font-weight: bold;
+    transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+    text-decoration: underline; 
+    }
     </style>
 </head>
 <body>
@@ -693,10 +703,10 @@
     </main>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2025 Estefany Gomes. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+    <div class="container">
+        <p id="copyright">&copy; 2025 esterxy. Todos os direitos reservados.</p>
+    </div>
+      </footer>
 
     <script>
         const observer = new IntersectionObserver((entries) => {
@@ -709,6 +719,11 @@
 
         const hiddenElements = document.querySelectorAll('.hidden');
         hiddenElements.forEach((el) => observer.observe(el));
+        document.getElementById('copyright').innerHTML = `&copy; ${new Date().getFullYear()} esterxy. Todos os direitos reservados.`;
+        const copyrightP = document.getElementById('copyright');
+        const currentYear = new Date().getFullYear();
+        const githubUrl = "https://github.com/esterxy";
+        copyrightP.innerHTML = `&copy; ${currentYear} <a href="${githubUrl}" target="_blank" rel="noopener noreferrer">esterxy</a>. Todos os direitos reservados.`;
     </script>
 
 </body>
