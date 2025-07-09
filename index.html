@@ -320,6 +320,12 @@
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 30px;
         }
+        
+        .project-link.disabled-link {
+        color: #808080; 
+        pointer-events: none; 
+        cursor: default;
+        }
 
         .project-card {
             background-color: rgba(10, 25, 47, 0.8);
@@ -577,27 +583,53 @@
         <section id="projetos" class="projects hidden">
             <div class="container">
                 <h2 class="section-title">PROJETOS</h2>
-                <p class="section-description">Uma seleção de projetos que demonstram minhas habilidades e paixão por programação.</p>
-                <div class="project-grid">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3 class="project-title">Cadastro de Usuário em C#</h3>
-                            <span class="project-tech">C#</span>
-                        </div>
-                        <div class="project-body">
-                            <p>Sistema de cadastro de usuários desenvolvido em C# com interface interativa no console. Permite cadastrar, listar e buscar usuários de forma simples e eficiente, facilitando a gestão de dados.</p>
-                            <a href="https://github.com/esterxy/Cadastro-de-usu-rio" target="_blank" class="project-link">Ver no GitHub</a>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3 class="project-title">Super Calculadora em JAVA</h3>
-                            <span class="project-tech">Java</span>
-                        </div>
-                        <div class="project-body">
-                            <p>Calculadora avançada criada em Java, oferecendo funcionalidades para cálculos matemáticos simples e complexos. Projetada para ser intuitiva, rápida e precisa para diversas operações.</p>
-                            <a href="https://github.com/esterxy/SuperCalculadora" target="_blank" class="project-link">Ver no GitHub</a>
-                        </div>
+                <p class="section-description">Uma seleção de projetos que demonstram minhas habilidades e paixão por programação.</p>     
+    <div class="project-grid">
+    <div class="project-card">
+        <div class="project-header">
+            <h3 class="project-title">Cadastro de Usuário em C#</h3>
+            <span class="project-tech">C#</span>
+        </div>
+        <div class="project-body">
+            <p>Sistema de cadastro de usuários desenvolvido em C# com interface interativa no console. Permite cadastrar, listar e buscar usuários de forma simples e eficiente, facilitando a gestão de dados.</p>
+            <a href="https://github.com/esterxy/Cadastro-de-usuario" target="_blank" class="project-link">Ver no GitHub</a>
+        </div>
+    </div>
+
+    <div class="project-card">
+        <div class="project-header">
+            <h3 class="project-title">Super Calculadora em JAVA</h3>
+            <span class="project-tech">Java</span>
+        </div>
+        <div class="project-body">
+            <p>Calculadora avançada criada em Java, oferecendo funcionalidades para cálculos matemáticos simples e complexos. Projetada para ser intuitiva, rápida e precisa para diversas operações.</p>
+            <a href="https://github.com/esterxy/SuperCalculadora" target="_blank" class="project-link">Ver no GitHub</a>
+        </div>
+    </div>
+
+    <div class="project-card">
+        <div class="project-header">
+            <h3 class="project-title">Gerador de QrCode</h3>
+            <span class="project-tech">HTML/CSS/JS</span>
+        </div>
+        <div class="project-body">
+            <p>Esta aplicação web permite que múltiplos usuários façam cadastro/login para gerar QR Codes personalizados a partir de links ou textos, associando apelidos para organização. Cada usuário possui seu histórico próprio de QR Codes, armazenado localmente no navegador (localStorage).</p>
+            <a href="https://github.com/esterxy/qrcodejsbasic" target="_blank" class="project-link">Ver no GitHub</a>
+        </div>
+    </div>
+
+    <div class="project-card">
+        <div class="project-header">
+            <h3 class="project-title">EfestIA</h3>
+            <span class="project-tech">C#/ASP.NET</span>
+        </div>
+        <div class="project-body">
+            <p>Nossa plataforma de Pentest com IA integrada, que simula ataques em ambientes controlados, detecta vulnerabilidades e gera relatórios precisos com sugestões práticas para sua equipe técnica.</p>
+            <a href="#!" class="project-link disabled-link">Em construção</a>
+        </div>
+    </div>
+</div>
+</div>
                     </div>
                 </div>
             </div>
