@@ -155,7 +155,7 @@
             display: none;
         }
 
-       
+        
         section { padding: 100px 0; position: relative; }
         .section-title { font-family: 'Roboto Mono', monospace; font-size: 2.5rem; color: #64B5F6; margin-bottom: 40px; text-align: center; }
         .section-description { max-width: 700px; color: #A7A7A7; font-size: 1.1rem; text-align: center; margin: 0 auto 40px auto; }
@@ -203,9 +203,11 @@
         footer a:hover { text-decoration: underline; }
 
         
+        /* ===== INÍCIO DAS MUDANÇAS PARA O MENU RESPONSIVO ===== */
         @media (max-width: 768px) {
             .main-nav {
-                display: none;
+                /* Esconde o menu de desktop */
+                display: none; 
             }
 
             .hamburger-menu {
@@ -224,49 +226,58 @@
                 margin: 5px 0;
                 transition: all 0.3s ease-in-out;
             }
-
-            .main-nav.is-active {
-                display: flex;
-                position: fixed;
-                top: 0;
-                right: 0;
-                width: 65%; 
-                height: 100vh;
-                background-color: rgba(10, 25, 47, 0.85); 
-                backdrop-filter: blur(10px); 
-                flex-direction: column;
-                justify-content: center;
-                align-items: flex-start; 
-                z-index: 1000;
-                padding-left: 40px; 
-            }
             
-            .main-nav.is-active ul {
-                flex-direction: column;
-                text-align: left; 
-                gap: 35px; 
-                padding: 0;
-                width: 100%;
-            }
-
-            .main-nav.is-active ul li {
-                margin: 0;
-                width: 100%;
-            }
-
-            .main-nav.is-active ul li a {
-                font-size: 1.6rem;
-            }
-            
-            .hamburger-menu.is-active {
-                position: fixed;
-                top: 20px;
-                right: 30px;
-            }
+            /* Animação do botão para 'X' */
             .hamburger-menu.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             .hamburger-menu.is-active .bar:nth-child(2) { opacity: 0; }
             .hamburger-menu.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+            /* A partir daqui, o novo estilo do menu DROPDOWN */
+            .main-nav {
+                display: block; /* Garante que o nav seja um bloco para o layout */
+                position: absolute; /* Posiciona o menu em relação ao header */
+                top: 100%; /* Começa exatamente abaixo do header */
+                left: 0;
+                right: 0;
+                width: 100%;
+                background-color: rgba(5, 10, 19, 0.95); /* Fundo com um pouco de transparência */
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid rgba(100, 181, 246, 0.1);
+                
+                /* A mágica do dropdown: transição de altura */
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-in-out;
+            }
+
+            .main-nav.is-active {
+                max-height: 500px; /* Altura suficiente para mostrar todos os links */
+            }
+            
+            .main-nav ul {
+                flex-direction: column;
+                padding: 15px 0; /* Espaçamento interno vertical */
+                gap: 10px; /* Espaço entre os links */
+            }
+
+            .main-nav ul li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .main-nav ul li a {
+                display: block; /* Faz o link ocupar toda a linha */
+                padding: 15px; /* Aumenta a área de clique */
+                font-size: 1.1rem;
+            }
+
+            .main-nav ul li a::after {
+                /* Remove o sublinhado animado no mobile para um visual mais limpo */
+                display: none;
+            }
         }
+        /* ===== FIM DAS MUDANÇAS PARA O MENU RESPONSIVO ===== */
     </style>
 </head>
 <body>
@@ -340,6 +351,7 @@
                     <div class="project-card"><div class="project-header"><h3 class="project-title">Cadastro de Usuário em C#</h3><span class="project-tech">C#</span></div><div class="project-body"><p>Sistema de cadastro de usuários desenvolvido em C# com interface interativa no console. Permite cadastrar, listar e buscar usuários de forma simples e eficiente, facilitando a gestão de dados.</p><a href="https://github.com/esterxy/Cadastro-de-usuario" target="_blank" class="project-link">Ver no GitHub</a></div></div>
                     <div class="project-card"><div class="project-header"><h3 class="project-title">Super Calculadora em JAVA</h3><span class="project-tech">Java</span></div><div class="project-body"><p>Calculadora avançada criada em Java, oferecendo funcionalidades para cálculos matemáticos simples e complexos. Projetada para ser intuitiva, rápida e precisa para diversas operações.</p><a href="https://github.com/esterxy/SuperCalculadora" target="_blank" class="project-link">Ver no GitHub</a></div></div>
                     <div class="project-card"><div class="project-header"><h3 class="project-title">Gerador de QrCode</h3><span class="project-tech">HTML/CSS/JS</span></div><div class="project-body"><p>Esta aplicação web permite que múltiplos usuários façam cadastro/login para gerar QR Codes personalizados a partir de links ou textos, associando apelidos para organização. Cada usuário possui seu histórico próprio de QR Codes, armazenado localmente no navegador (localStorage).</p><a href="https://github.com/esterxy/qrcodejsbasic" target="_blank" class="project-link">Ver no GitHub</a></div></div>
+                    <div class="project-card"><div class="project-header"><h3 class="project-title">Conversor de Moeda</h3><span class="project-tech">Python</span></div><div class="project-body"><p>Projeto em Python com interface em CustomTkinter para conversão rápida entre BRL e USD. Possui design simples e intuitivo, com possibilidade de integração futura a APIs para atualização automática da cotação. Permite conversão nos dois sentidos (Real → Dólar e Dólar → Real).</p><a href="https://github.com/esterxy/Calculadora-de-convers-o-de-moeda" target="_blank" class="project-link">Ver no GitHub</a></div></div>
                     <div class="project-card"><div class="project-header"><h3 class="project-title">EfestIA</h3><span class="project-tech">C#/ASP.NET</span></div><div class="project-body"><p>Nossa plataforma de Pentest com IA integrada, que simula ataques em ambientes controlados, detecta vulnerabilidades e gera relatórios precisos com sugestões práticas para sua equipe técnica.</p><a href="#!" class="project-link disabled-link">Em construção</a></div></div>
                 </div>
             </div>
@@ -387,10 +399,14 @@
         // MENU HAMBÚRGUER
         const hamburgerMenu = document.querySelector('.hamburger-menu');
         const mainNav = document.querySelector('.main-nav');
+        
         hamburgerMenu.addEventListener('click', () => {
+            // Alterna a classe no botão e no menu
             hamburgerMenu.classList.toggle('is-active');
             mainNav.classList.toggle('is-active');
         });
+
+        // Fecha o menu dropdown quando um link é clicado
         mainNav.querySelectorAll('a[href^="#"]').forEach(link => {
             link.addEventListener('click', () => {
                 hamburgerMenu.classList.remove('is-active');
